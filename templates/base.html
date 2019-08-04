@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>DiscGolf Deep Analytics</title>
+    
+    <!-- Our CSS -->
+    <link rel="stylesheet" type="text/css" href="../../static/css/style.css">
+    <!-- <link rel="stylesheet" type="text/css" href="../../static/css/flexselect.css"> -->
+<!-- Libraries -->
+
+<!-- <script src="../../static/js/jquery.flexselect.js"></script>
+<script src="../../static/js/liquidmetal.js"></script> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js"></script>
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/core.js"></script> -->
+
+<!-- d3 JS -->
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+
+<!-- ajax // Plotly -->   
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.min.js"></script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script> 
+
+<!-- Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</head>
+<body>
+
+<!-- Leaflet js files--> <!-- not currently in use! -->
+    <!-- <div id="map"></div>
+    <script type="text/javascript" src="static/js/config.js"></script>
+    <script type="text/javascript" src="static/js/logic.js"></script> -->
+
+    <form autocomplete="off" action="/action_page.php">
+        <h6> Select two players, a course, and a date.</h6>
+        <div class="row">
+        <div class="autocomplete col">
+            <input type="text" class="form-control" id="Player1Input" placeholder="Player1">
+        </div>
+        <div class="autocomplete col">
+            <input type="text" class="form-control" id="Player2Input" placeholder="Player2">
+        </div>
+        <div class="autocomplete col">
+            <select id="CourseInput">
+                <option value="" disabled selected>Select a course...</option>
+                <option value="0">San Francisco</option>
+                <option value="1">Chabot</option>
+                <option value="2">Aquatic Park</option>
+                
+              </select>
+        </div>
+        <div class="autocomplete col">
+            <input type="text" class="form-control" id="DateTimeInput" placeholder="DateTime">
+        </div>
+        <div class="col">
+            <button id="button" class="autocompletebtn">Submit</button>
+        </div>
+    </div>  
+    </form>
+    <br>
+<br>
+
+<div class="container" style="background: rgba(255,255,255,.6);">
+    
+    <div class="row">
+        <div class="col-md-12">
+                <h3>Course</h3>
+        </div>    
+    </div>    
+    
+    <div class="row">
+        <div class="col-md-12">
+            <div class="JumboTronBro">
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="PredictedWindBro">
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="PredictedWindBro2">
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="PredictedRainBro">
+            </div>
+        </div>    
+    </div>
+                
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="Name1">
+            <!-- Figure out how to Plug in Name as a heading -->
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="Name2">
+                <!-- Figure out how to Plug in Name as a heading -->
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+
+        <div class="col-md-2">
+                <!-- Left Justify! -->
+            <div class="Badge1a">
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="Badge2a">
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="Badge3a">
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+
+        <div class="col-md-2">
+            <div class="Badge1b">
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="Badge2b">
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="Badge3b">
+            </div>
+        </div>
+    </div>
+
+
+    <h2>Career Stats</h2>
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="Boxplota">
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="Boxplotb">
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-2">
+            <div class="Counta">
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="Meana">
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="StandardDeva">
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="Countb">
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="Meanb">
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="StandardDevb">
+            </div>
+        </div>                                                                          
+    </div>
+    
+    <h2>Predicted Score</h2>
+
+    <div class="SummaryScore1"></div>
+    <div class="SummaryScore2"></div>
+    <div class="Odds"></div>
+
+
+    <div class="row">
+
+
+
+        <div class="col-md-12 justify-content-center">
+                <table id="ufo-table" class="table table-striped">
+                        <thead>
+                          <tr>
+                            <th class="table-head">Player 1</th>
+                            <th class="table-head">Predicted Score</th>
+                            <th class="table-head">Player 2</th>
+                            <th class="table-head">Predicted Score</th>
+                            <th class="table-head">Odds</th>
+                          </tr>
+                        </thead>
+                        <tbody id="Odds"></tbody>
+                      </table>
+        </div>
+    </div>
+
+    
+    <div class="TheOddsBar"></div>
+
+
+    <!-- <script src="{{ url_for('static', filename='js/autocompleter.js') }}"></script> -->
+    <script src="{{ url_for('static', filename='js/ButtonResponse.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/autocomp_test.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/autocomp2.js') }}"></script>
+    <!-- <script> autocomplete(document.getElementById("myInput"), players) </script> -->
+
+</body>
+
+
+
+
+</html>
