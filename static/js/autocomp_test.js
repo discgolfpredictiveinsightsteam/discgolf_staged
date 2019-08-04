@@ -1,4 +1,4 @@
-d3.json("http://localhost:5000/players").then(function(data) {
+d3.json("/players").then(function(data) {
       // console.log(data)
 
       function autocomplete(inp, arr) {
