@@ -17,19 +17,14 @@ function respond_to_button() {
     console.log("Your button is reacting");
     var userSelectedPlayer1 = d3.select("#Player1Input").node().value;
     var userSelectedPlayer2 = d3.select("#Player2Input").node().value;
-    var userSelectedCourse = d3.select("#CourseInput").property("value");
+    var userSelectedCourse = d3.select("#CourseInput").node().value;
     var userSelectedDateTime = d3.select("#DateTimeInput").node().value;
     console.log(userSelectedPlayer1);
     console.log(userSelectedPlayer2);
     console.log(userSelectedCourse);
     console.log(userSelectedDateTime);
-    var names1 = userSelectedPlayer1.split(', ');
-    var name1ForRoute = names1[1] + '_' + names1[0];
-    var names2 = userSelectedPlayer2.split(', ');
-    var name2ForRoute = names2[1] + '_' + names2[0]
-    console.log(name1ForRoute);
-    console.log(name2ForRoute);
-    giveodds(name1ForRoute, name2ForRoute, userSelectedCourse, userSelectedDateTime);
+
+    giveodds(userSelectedPlayer1, userSelectedPlayer2, userSelectedCourse, userSelectedDateTime);
 };
 
     
@@ -58,8 +53,8 @@ function respond_to_button() {
 function giveodds(player1, player2, course, date) {
     console.log("giveodds is in play");
     var data_fetch_url = `/score_model/${player1}/${player2}/${course}/${date}`;
-    console.log(data_fetch_url)
-    d3.json(data_fetch_url).then( function (data) {
+    d3.json(data_fetch_url).then(function(data) {
+        console.log(data);
         // Grab values from the response json object to build the plots
         var score1 = data[0];
         var score2 = data[1];
@@ -69,9 +64,9 @@ function giveodds(player1, player2, course, date) {
         console.log(score2);
         console.log(oddsscore);
 
-  var tbodyodds = d3.select("tbody");
-  var row = tbodyodds.append("tr");
-  var cell = tbodyodds.append("td");
+var tbodyodds = d3.select("tbody");
+var row = tbodyodds.append("tr");
+var cell = tbodyodds.append("td");
 
   var row = tbodyodds.append("tr");
   var cell = tbodyodds.append("td");

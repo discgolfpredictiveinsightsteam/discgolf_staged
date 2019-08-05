@@ -166,7 +166,7 @@ var weather_route = //URL for the app route to /weather.
 
 
 
-    d3.json(approute, function)
+    d3.json(approute function)
 
 // Select players, display badges, display career stats for each player.
 // Present visauzlized odds for one player to beat another on a given day.

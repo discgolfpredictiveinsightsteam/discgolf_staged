@@ -38,7 +38,7 @@
     <script type="text/javascript" src="static/js/config.js"></script>
     <script type="text/javascript" src="static/js/logic.js"></script> -->
 
-    <form autocomplete="off" action="/action_page.php">
+    <form autocomplete="off">
         <h6> Select two players, a course, and a date.</h6>
         <div class="row">
         <div class="autocomplete col">
@@ -48,19 +48,13 @@
             <input type="text" class="form-control" id="Player2Input" placeholder="Player2">
         </div>
         <div class="autocomplete col">
-            <select id="CourseInput">
-                <option value="" disabled selected>Select a course...</option>
-                <option value="0">San Francisco</option>
-                <option value="1">Chabot</option>
-                <option value="2">Aquatic Park</option>
-                
-              </select>
+            <input type="text" class="form-control" id="CourseInput" placeholder="Course">
         </div>
         <div class="autocomplete col">
             <input type="text" class="form-control" id="DateTimeInput" placeholder="DateTime">
         </div>
         <div class="col">
-            <button id="button" class="autocompletebtn">Submit</button>
+            <button id="button" class="btn btn-primary">Submit</button>
         </div>
     </div>  
     </form>
@@ -217,8 +211,8 @@
 
     <!-- <script src="{{ url_for('static', filename='js/autocompleter.js') }}"></script> -->
     <script src="{{ url_for('static', filename='js/ButtonResponse.js') }}"></script>
-    <script src="{{ url_for('static', filename='js/autocomp_test.js') }}"></script>
-    <script src="{{ url_for('static', filename='js/autocomp2.js') }}"></script>
+
+    
     <!-- <script> autocomplete(document.getElementById("myInput"), players) </script> -->
 
 </body>
