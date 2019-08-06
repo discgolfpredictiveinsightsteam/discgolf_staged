@@ -623,4 +623,4 @@ function createOddsBar(value) {
         .attr("fill", "green")
         .attr("id", "blockbro");
         
-       
+}
