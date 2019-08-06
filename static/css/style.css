@@ -47,3 +47,33 @@ input[type=submit] {
   background-color: DodgerBlue !important; 
   color: #ffffff; 
 }
+
+body {
+  background-image: url('../src/DSC_0117.JPG');
+  background-size: cover;
+}
+
+.greenborder {
+  border: 2px solid green
+}
+
+.redborder {
+  border: 2px solid red;
+  border-radius: 4px
+}
+
+.greenguy {
+  color: green
+}
+
+.redguy {
+  color: red
+}
+
+.bar {
+  fill: green
+}
+
+.barbacked {
+  background-color: red
+}

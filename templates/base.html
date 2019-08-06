@@ -38,58 +38,42 @@
     <script type="text/javascript" src="static/js/config.js"></script>
     <script type="text/javascript" src="static/js/logic.js"></script> -->
 
+    <div class="container" style="background: rgba(255,255,255,.9);">
     <form autocomplete="off">
         <h6> Select two players, a course, and a date.</h6>
         <div class="row">
         <div class="autocomplete col">
-            <input type="text" class="form-control" id="Player1Input" placeholder="Player1">
+            <input type="text" class="form-control greenborder" id="Player1Input" placeholder="Player1">
         </div>
         <div class="autocomplete col">
-            <input type="text" class="form-control" id="Player2Input" placeholder="Player2">
+            <input type="text" class="form-control redborder" id="Player2Input" placeholder="Player2">
         </div>
         <div class="autocomplete col">
-            <input type="text" class="form-control" id="CourseInput" placeholder="Course">
+            <select id="CourseInput">
+                <option value="" disabled selected>Select a course...</option>
+                <option value="0">San Francisco</option>
+                <option value="1">Chabot</option>
+                <option value="2">Aquatic Park</option>
+                
+              </select>
         </div>
         <div class="autocomplete col">
             <input type="text" class="form-control" id="DateTimeInput" placeholder="DateTime">
         </div>
         <div class="col">
-            <button id="button" class="btn btn-primary">Submit</button>
+            <button id="button" class="autocompletebtn btn btn-primary">Submit</button>
         </div>
     </div>  
     </form>
     <br>
 <br>
-
-<div class="container" style="background: rgba(255,255,255,.6);">
     
+    <h2 align ="center">Course</h2>      
     <div class="row">
         <div class="col-md-12">
-                <h3>Course</h3>
-        </div>    
-    </div>    
-    
-    <div class="row">
-        <div class="col-md-12">
-            <div class="JumboTronBro">
-            </div>
+            <div id="JumboTronBro" class="text-center"></div>
         </div>
     </div>
-    <div class="row">
-        <div class="col-md-4">
-            <div class="PredictedWindBro">
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="PredictedWindBro2">
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="PredictedRainBro">
-            </div>
-        </div>    
-    </div>
-                
 
     <div class="row">
         <div class="col-md-6">
@@ -137,48 +121,40 @@
         </div>
     </div>
 
+        <br>
 
-    <h2>Career Stats</h2>
 
+
+    <h3 align="center"> Predicted Weather Factors </h3>
     <div class="row">
-        <div class="col-md-6">
-            <div class="Boxplota">
+        
+        <div class="col-md-12 justify-content-center">
+            <table id="ufo-table" class="table table-striped">
+                <thead align="center">
+                    <tr>
+                    <th class="table-head">Wind Direction</th>
+                    <th class="table-head">Wind Gust Max Speed</th>
+                    <th class="table-head">Precipitation</th>
+                    </tr>
+                </thead>
+                <tbody id="PredictedWeather" align="center"></tbody>
+            </table>
+    </div>
+        <div class="col-md-4">
+            <div id="PredictedWindBro">
             </div>
         </div>
-        <div class="col-md-6">
-            <div class="Boxplotb">
+        <div class="col-md-4">
+            <div class="PredictedWindBro2">
             </div>
         </div>
+        <div class="col-md-4">
+            <div class="PredictedRainBro">
+            </div>
+        </div>    
     </div>
 
-    <div class="row">
-        <div class="col-md-2">
-            <div class="Counta">
-            </div>
-        </div>
-        <div class="col-md-2">
-            <div class="Meana">
-            </div>
-        </div>
-        <div class="col-md-2">
-            <div class="StandardDeva">
-            </div>
-        </div>
-        <div class="col-md-2">
-            <div class="Countb">
-            </div>
-        </div>
-        <div class="col-md-2">
-            <div class="Meanb">
-            </div>
-        </div>
-        <div class="col-md-2">
-            <div class="StandardDevb">
-            </div>
-        </div>                                                                          
-    </div>
-    
-    <h2>Predicted Score</h2>
+    <h2 align="center">Predicted Match Outcome</h2>
 
     <div class="SummaryScore1"></div>
     <div class="SummaryScore2"></div>
@@ -191,28 +167,90 @@
 
         <div class="col-md-12 justify-content-center">
                 <table id="ufo-table" class="table table-striped">
-                        <thead>
-                          <tr>
-                            <th class="table-head">Player 1</th>
-                            <th class="table-head">Predicted Score</th>
-                            <th class="table-head">Player 2</th>
-                            <th class="table-head">Predicted Score</th>
-                            <th class="table-head">Odds</th>
-                          </tr>
-                        </thead>
-                        <tbody id="Odds"></tbody>
-                      </table>
+                    <thead align="center">
+                        <tr>
+                        <th class="table-head greenguy">Player 1</th>
+                        <th class="table-head greenguy">Predicted Score</th>
+                        <th class="table-head"><strong>Odds</strong></th>
+                        <th class="table-head redguy">Predicted Score</th>
+                        <th class="table-head redguy">Player2</th>
+                        </tr>
+                    </thead>
+                    <tbody id="Odds" align="center"></tbody>
+                </table>
         </div>
     </div>
 
+    <br>
     
     <div class="TheOddsBar"></div>
+
+    <br>
+
+
+        <h2 align="center">Player Histories at a Glance</h2>
+    <div class="row">
+            <div class="col-md-6 justify-content-center">
+                <div>
+                    <table class="table table-striped">
+                        <thead align="center">
+                            <tr>
+                            <th class="table-head greenguy">Score Count</th>
+                            <th class="table-head greenguy">Mean</th>
+                            <th class="table-head greenguy">Standard Deviation</th>
+                            </tr>
+                        </thead>
+                        <tbody id="ASummary" align="center"></tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="col-md-6 justify-content-center">
+                <div>
+                    <table class="table table-striped">
+                        <thead align="center">
+                            <tr>
+                            <th class="table-head redguy">Standard Deviation</th>
+                            <th class="table-head redguy">Mean</th>
+                            <th class="table-head redguy">Score Count</th>
+                            </tr>
+                        </thead>
+                        <tbody id="BSummary" align="center"></tbody>
+                    </table>
+                </div>                                                                      
+            </div>
+        </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="Boxplota">
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="Boxplotb">
+            </div>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-md-6" id="lineplot1"></div>
+        <div class="col-md-6" id="lineplot2"></div>
+    </div>
+    <div class="row">
+        <div class="col-md-2" id="eh"></div>
+        <div class="col-md-8" id="boxplot1"></div>
+        <div class="col-md-2" id="boxplot2"></div>
+    </div>
+</div>
+
+    <div class="row">
+        <div class="col-md-12">
+
 
 
     <!-- <script src="{{ url_for('static', filename='js/autocompleter.js') }}"></script> -->
     <script src="{{ url_for('static', filename='js/ButtonResponse.js') }}"></script>
-
-    
+    <script src="{{ url_for('static', filename='js/autocomp_test.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/autocomp2.js') }}"></script>
     <!-- <script> autocomplete(document.getElementById("myInput"), players) </script> -->
 
 </body>
