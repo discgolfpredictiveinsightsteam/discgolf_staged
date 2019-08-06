@@ -465,8 +465,8 @@ function careerstats(guy1, guy2) {
 
 
 
-    var P1StDev = variance(array7);
-    var P2StDev = variance(array7b)
+    var P1StDev = Math.sqrt(variance(array7));
+    var P2StDev = Math.sqrt(variance(array7b));
     console.log(P1StDev);
     console.log(P2StDev);
 
@@ -615,6 +615,8 @@ function modelWeak() {
 
 function createOddsBar(value) {
 
+    document.getElementById('TheOddsBar').innerHTML="";
+
     var dataArray1 = [value];
 
     rectwidthstring = value * 100 + "%";
@@ -622,7 +624,7 @@ function createOddsBar(value) {
 
 
     console.log(dataArray1);
-    var svg = d3.select(".TheOddsBar")
+    var svg = d3.select("#TheOddsBar")
         .append("svg")
         .attr("height", "110")
         .attr("width", "100%")
@@ -634,9 +636,9 @@ function createOddsBar(value) {
         .attr("height", "110")
         .attr("x", 0)
         .attr("y", 0)
-        .attr("fill", "green");
+        .attr("fill", "green")
+        .attr("id", "blockbro");
         
-
        
 
     // var databro = [{x1: 0, x2: 1, y1: 100},
