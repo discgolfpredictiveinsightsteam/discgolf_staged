@@ -69,25 +69,25 @@ function predictweather(course, date) {
         bearing = "North " + "(" + winddirection + "º" + ")";
       }
       else if (winddirection < 60) {
-        bearing = "North-West " + "(" + winddirection + "º" + ")";
+        bearing = "North-East " + "(" + winddirection + "º" + ")";
       }
       else if (winddirection < 120) {
-        bearing = "South " + "(" + winddirection + "º" + ")";
+        bearing = "East " + "(" + winddirection + "º" + ")";
       }
       else if (winddirection < 150) {
-        bearing = "South-West " + "(" + winddirection + "º" + ")";
+        bearing = "South-East " + "(" + winddirection + "º" + ")";
       }
       else if (winddirection < 210) {
         bearing = "South  " + "(" + winddirection + "º" + ")";
       }
       else if (winddirection < 240) {
-        bearing = "South-East  " + "(" + winddirection + "º" + ")";
+        bearing = "South-West  " + "(" + winddirection + "º" + ")";
       }
       else if (winddirection < 300) {
-        bearing = "East " + "(" + winddirection + "º" + ")";
+        bearing = "West " + "(" + winddirection + "º" + ")";
       }
       else if (winddirection < 330) {
-        bearing = "North-East " + "(" + winddirection + "º" + ")";
+        bearing = "North-West " + "(" + winddirection + "º" + ")";
       }
       else {
         bearing = "North " + "(" + winddirection + "º" + ")";
@@ -545,23 +545,7 @@ function isNum(args) {
     }
     return true;
     }
-    //calculate the mean of a number array
-// function mean(arr) {
-//     var len = 0;
-//     var sum = 0;
-//     for(var i=0;i<arr.length;i++) {
-//     if (arr[i] == ""){}
-//     else if (!isNum(arr[i])) {
-//     alert(arr[i] + " is not number!");
-//     return;
-//     }
-//     else {
-//     len = len + 1;
-//     sum = sum + parseFloat(arr[i]);
-//     }
-//     }
-//     return sum / len;
-//     }
+
 
 function mean(numbers) {
     // mean of [3, 5, 4, 4, 1, 1, 2, 3] is 2.875
@@ -640,80 +624,3 @@ function createOddsBar(value) {
         .attr("id", "blockbro");
         
        
-
-    // var databro = [{x1: 0, x2: 1, y1: 100},
-    //     {x1: 0, x2: value, y1: 100}];
-
-    // svg.append("rect")
-    //     .data(databro)
-    //     .enter()
-    //     .append("rect")
-    //     .attr("x", d=> d.x1)
-    //     .attr("y", d=> d.y1)
-    //     .attr("width", value * 100 + "%")
-    //     .attr("height", d=> d.y2 - d.y1)
-    //     .attr("fill", "teal");
-
-    }
-
-//     svg.append("rect")
-//         .classed("bar", true)
-//         .data(dataArray1)
-//         .attr("height", "100")
-//         .attr("width", function(d) {
-//             return d * 1000;
-//         })
-//         .attr("x", 0)
-//         .attr("y", 0)
-
-
-//     var rects = svg.selectAll("rect");
-
-//     var wvals = [0, value, 1]
-
-//     rects.data(wvals)
-//         .enter()
-//         .append("rect")
-//         .attrs({x:})
-// }
-// if (!svgArea.empty()) {
-// svgArea.remove();
-// }
-//     var svgHeight = 200;
-//     var svgWidth = window.innerWidth
-
-//     var margin = {
-//         top: 50,
-//         right: 50,
-//         bottom: 50,
-//         left: 50
-//     }
-
-//     var chartHeight = svgHeight - margin.top - margin.bottom;
-//     var chartWidth = svgWidth - margin.left - margin.right;
-
-//     var svg = d3.select("TheOddsBar")
-//     .append("svg")
-//     .attr("width", svgWidth)
-//     .attr("height", svgHeight);
-
-//     var chartGroup=svg.append("g")
-//     .attr("transform", `translate(${margin.left}, ${margin.top})`);
-
-//     var xScale = d3.scaleBand()
-//     .domain(dataCategories)
-//     .range([0, chartWidth])
-//     .padding(0.1);
-
-//     var xAxis = d3.axisBottom(xScale);
-
-//     chartGroup.append("g")
-//     .attr("transform", `translate(0, ${chartHeight})`)
-//     .call(xAxis);
-
-
-//     chartGroup.selectAll("rect")
-//         .data(oddsscore)
-//         .enter()
-//         .append("rect")
-// }
