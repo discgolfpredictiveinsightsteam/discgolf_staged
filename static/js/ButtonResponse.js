@@ -12,6 +12,12 @@ document.getElementById("button").addEventListener("click", function(event){
 //     });
 // });
 
+function round(value, decimals)
+    // published by Jack Moore at https://www.jacklmoore.com/notes/rounding-in-javascript/
+    {
+        return Number(Math.round(value+'e'+decimals)+'e-'+decimals);
+    }
+
 
 function respond_to_button() {
     console.log("Your button is reacting");
@@ -351,7 +357,7 @@ function careerstats(guy1, guy2) {
     ];
 
     var layout1 = {
-        title: guy1 + " Recorded Scores",
+        title: guy1.replace(/_/g, " ") + " Recorded Scores",
         yaxis: {
         title: 'Points',
         },
@@ -373,7 +379,7 @@ function careerstats(guy1, guy2) {
     ];
 
     var layout2 = {
-        title: guy2 + " Recorded Scores",
+        title: guy2.replace(/_/g, " ") + " Recorded Scores",
         yaxis: {
         title: 'Points',
         },
@@ -389,6 +395,7 @@ function careerstats(guy1, guy2) {
         jitter: 0.3,
         poitpos: -1.8,
         type: 'box',
+        name: guy1.replace(/_/g, " "),
         marker: {
             color: 'green'
         }
@@ -410,6 +417,7 @@ function careerstats(guy1, guy2) {
         jitter: 0.3,
         poitpos: -1.8,
         type: 'box',
+        name: guy2.replace(/_/g, " "),
         marker: {
             color: 'red'
         }
@@ -478,9 +486,9 @@ function careerstats(guy1, guy2) {
     var cell1 = tbodysummary1.append("td");
     cell1.text(P1N);
     var cell1 = tbodysummary1.append("td");
-    cell1.text(P1Mean);
+    cell1.text(round(P1Mean,2));
     var cell1 = tbodysummary1.append("td");
-    cell1.text(P1StDev);
+    cell1.text(round(P1StDev,2));
 
     var tbodysummary2 = d3.select("#BSummary");
 
@@ -488,9 +496,9 @@ function careerstats(guy1, guy2) {
 
     var row2 = tbodysummary2.append("tr");
     var cell2 = tbodysummary2.append("td");
-    cell2.text(P2StDev);
+    cell2.text(round(P2StDev,2));
     var cell2 = tbodysummary2.append("td");
-    cell2.text(P2Mean);
+    cell2.text(round(P2Mean,2));
     var cell2 = tbodysummary2.append("td");
     cell2.text(P2N);
     
@@ -520,15 +528,15 @@ function giveodds(player1, player2, course, date) {
 
   var row = tbodyodds.append("tr");
   var cell = tbodyodds.append("td");
-  cell.text(player1);
+  cell.text(player1.replace(/_/g, " "));
   var cell = tbodyodds.append("td");
-  cell.text(score1);
+  cell.text(round(score1,2));
   var cell = tbodyodds.append("td");
-  cell.text(oddsscore);
+  cell.text(round(oddsscore,2));
   var cell = tbodyodds.append("td");
-  cell.text(score2);
+  cell.text(round(score2,2));
   var cell = tbodyodds.append("td");
-  cell.text(player2);
+  cell.text(player2.replace(/_/g, " "));
   row.text("");
 
   createOddsBar(oddsscore)

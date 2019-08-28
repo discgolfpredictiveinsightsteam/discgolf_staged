@@ -267,6 +267,31 @@ def model_data(player1, player2, course, date):
         player2_data.mean()['precip_coeff'] * weighted_precip 
     player1_var = player1_data.mean()['mse']
     player2_var = player2_data.mean()['mse']
+    # If no data was found in the model, check the raw scores database
+    # and just use mean and standard deviation (default 6 if only one game).
+    # Note:  this situation arises when a player has no recent games, the 
+    # name will show up in the score database but not the weather model database
+    if np.isnan(player1_score):
+            results1 = db.session.query(Scores.Raw).\
+                filter_by(Name = player1_ns).\
+                limit(20000).all()
+            score_list = [int(item.Raw) for item in results1]
+            print(f'Score list: {score_list}')
+            player1_score = np.mean(score_list)
+            player1_var = np.std(score_list)
+            if np.isnan(player1_var) or player1_var < 1.0:
+                player1_var = 6.0
+    if np.isnan(player2_score):
+            results2 = db.session.query(Scores.Raw).\
+                filter_by(Name = player2_ns).\
+                limit(20000).all()
+            score_list = [int(item.Raw) for item in results2]
+            print(f'Score list: {score_list}')
+            player2_score = np.mean(score_list)
+            player2_var = np.std(score_list)
+            if np.isnan(player2_var) or player2_var < 1.0:
+                player2_var = 6.0            
+
     score_diff = player2_score - player1_score
     score_var = player1_var + player2_var
     score_se = np.sqrt(score_var)
